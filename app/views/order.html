@@ -1,0 +1,41 @@
+	
+<h3 style = "text-align: center">新的订单</h3>
+<hr>
+
+<div class="container">
+
+	
+
+   <form action="" class="form-horizontal">
+   	  <div class="form-group">
+   	  	<label class="col-sm-3 control-label">  服务日期  </label>
+   	  	<div class="col-sm-5 selectContainer	">
+   	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()">
+				<option  ng-repeat="day in dayForSelect" value="{{$index}}" >{{day}}</option>
+			</select>
+   	  	</div>
+   	  </div>
+
+   	   <div class="form-group">
+	        <label class="col-sm-3 control-label">服务时间段</label>
+	        <div class="col-sm-5 selectContainer">
+	            <select name="time" id=""  class="form-control" ng-model="selectedTime">
+	                <option  ng-repeat="time in timeForSelect" value="{{$index}}">{{time}}</option>
+	            </select>
+	        </div>
+	    </div>
+		
+	
+		<!-- <input type="checkbox">地址1
+		<br>
+		<input type="checkbox">地址2
+		<br>
+		<input type="checkbox">地址3 -->
+   </form>
+
+	
+
+
+</div>
+
+<br>
