@@ -30,6 +30,10 @@ angular
         templateUrl: 'views/order.html',
         controller: 'OrderCtrl'
       })
+      .when('/address', {
+        templateUrl: 'views/address.html',
+        controller: 'AddressCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -8,7 +8,7 @@
  * Controller of the cloudLaundryApp
  */
 angular.module('cloudLaundryApp')
-  .controller('OrderCtrl', ['timeFactory','$scope',function (timeFactory,$scope) {
+  .controller('OrderCtrl', ['timeFactory','addressFactory','$scope','$location', function (timeFactory,addressFactory,$scope,$location) {
     
     
    var todayDate = new Date;
@@ -58,27 +58,24 @@ angular.module('cloudLaundryApp')
 
      //init day and time select 
      $scope.selectedDay = "0";
-     $scope.selectedTime = ""; 
+     $scope.selectedTime = "0"; 
      initDayDuration();
      initTimeDuration();
 
+    $scope.addAddress = function () {
+      $location.path('/address');
+    }
 
-
-
+    $scope.goBack = function () {
+      $location.path('/');
+    }
+    
+   $scope.userAddress = addressFactory.getUserAddress();
 
     
+   $scope.selectedOrder = 0;
 
-
-  
-
- 
-     
-   // setInterval(function(){
-   // 	console.log($scope.selectedDay);
-   // 	console.log($scope.selectedTime);
-   // 	console.log($scope.dayForSelect[$scope.selectedDay]);
-   // 	console.log($scope.timeForSelect[$scope.selectedTime]);
-   // },1000)
+   
 
 
   }]);

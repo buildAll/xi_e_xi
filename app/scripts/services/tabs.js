@@ -11,7 +11,7 @@ angular.module('cloudLaundryApp')
   .factory('Tabs', function () {
     var tabs = [
           {name:"首页",link:"#/"},
-          {name:"新订单",link:"#/order"},
+          // {name:"新订单",link:"#/order"},
           {name:"我的订单",link:"#/contact"}
         ];
 

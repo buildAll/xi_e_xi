@@ -7,10 +7,10 @@
 </div>  -->
 <div class="header">
 <div class="container">
-    <div class="row">
-        <div class="span2">
-            <ul class="nav nav-pills pull-right " >
-                <li  ng-repeat="tab in tabs" ng-class="{active:isSelected(tab.name)}" ng-click="activeTab(tab.name)" ><a ng-href="{{tab.link}}" ng-bind="tab.name"></a></li>
+    <div class="row ">
+        <div class="span2 full-width-tabs">
+            <ul class="nav nav-pills nav-tabs " >
+                <li  ng-repeat="tab in tabs" ng-class="{'active':isSelected(tab.name),'take-all-space-you-can':'true'}" ng-click="activeTab(tab.name)" ><a ng-href="{{tab.link}}" ng-bind="tab.name"></a></li>
             </ul>
         </div>
     </div>

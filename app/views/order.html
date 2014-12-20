@@ -1,5 +1,17 @@
+
+<div class="container">
+	<div class="row .bottom-align-text">
+		
+			<button class="btn btn-default btn-sm col-xs-3" ng-click="goBack()">返回首页</button>
+		    <h4 class="center-align col-xs-6">新的订单</h4>
+		    <button class="btn btn-primary btn-sm col-xs-3" ng-click="addAddress()">添加地址</button>
+
+	</div>
+</div>	
+
 	
-<h3 style = "text-align: center">新的订单</h3>
+
+
 <hr>
 
 <div class="container">
@@ -8,29 +20,40 @@
 
    <form action="" class="form-horizontal">
    	  <div class="form-group">
-   	  	<label class="col-sm-3 control-label">  服务日期  </label>
-   	  	<div class="col-sm-5 selectContainer	">
-   	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()">
+   	  	<label class="col-xs-5 control-label">  服务日期  </label>
+   	  	<div class="col-xs-7 selectContainer	">
+   	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()" >
 				<option  ng-repeat="day in dayForSelect" value="{{$index}}" >{{day}}</option>
 			</select>
    	  	</div>
    	  </div>
 
    	   <div class="form-group">
-	        <label class="col-sm-3 control-label">服务时间段</label>
-	        <div class="col-sm-5 selectContainer">
-	            <select name="time" id=""  class="form-control" ng-model="selectedTime">
+	        <label class="col-xs-5 control-label ">服务时间段</label>
+	        <div class="col-xs-7 selectContainer">
+	            <select name="time" id=""  class="form-control" ng-model="selectedTime" >
 	                <option  ng-repeat="time in timeForSelect" value="{{$index}}">{{time}}</option>
 	            </select>
 	        </div>
 	    </div>
-		
+
+	    <!-- <input type="button" class="btn-small full-width" value="添加地址"></input> -->
+
+
+	    <div class="table-responsive" >
+		  <table class="table table-bordered" data-height="299" data-click-to-select="true" data-select-item-name="radioName">
+             <thead>
+	             	<tr ng-repeat="addr in userAddress track by $index" >
+			      	<th data-field="state" data-radio="true"><input type="radio" ng-model="$parent.selectedOrder" value="{{$index}}"></th>
+			        <th data-field="cityname" data-align="center">{{addr.cityName}}</th>
+			        <th data-field="cityzone" data-align="center">{{addr.zone}}</th>
+			      </tr>
+             </thead>	
+		      
+		</table>
+		</div>
 	
-		<!-- <input type="checkbox">地址1
-		<br>
-		<input type="checkbox">地址2
-		<br>
-		<input type="checkbox">地址3 -->
+	
    </form>
 
 	

@@ -1,0 +1,40 @@
+<button class="btn btn-default btn-sm col-xs-2" ng-click="goBack()">返回</button>
+<br>
+<hr>
+
+<div class="container ">
+	<form ng-submit="saveAddress()" class="horizontal">
+	  <div class="form-group">
+   	  	<label class="control-label"> 姓名  </label>
+           <input class=" full-width" type="text" "form-control col-xs-7" ng-model="userName">
+   	  </div>
+      <div class="form-group">
+        <label class="control-label"> 电话  </label>
+           <input class=" full-width"  type="number" "form-control col-xs-7" ng-model="userTel">
+      </div>
+
+      <hr>
+      <div class="form-group">
+          <label class=" control-label sr-only">城市</label>
+          <div class="selectContainer">
+              <select name="city" id=""  class="form-control full-width" ng-model="selectedCity" ng-options="city.name for city in cityForSelect" ng-change="updateZoneForSelect()"></select>
+          </div>
+      </div> 
+
+      <div class="form-group">
+          <label class=" control-label sr-only">区域</label>
+          <div class=" selectContainer">
+              <select name="zone" id=""  class="form-control full-width" ng-model="selectedZone" ng-options="zone for zone in zoneForSelect"></select>
+          </div>
+      </div> 
+      <br>
+
+      <div class="form-group">
+        <!-- <label for="comment">Comment:</label> -->
+        <textarea class="form-control" rows="3" id="comment" placeholder="请输入详细地址..." ng-model="detail"></textarea>
+      </div>
+      <button class="btn-small full-width">保存</button>
+	</form>
+	
+	
+</div>
