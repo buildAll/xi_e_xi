@@ -35,7 +35,7 @@ angular
         controller: 'AddressCtrl'
       })
       .when('/mine', {
-        templateUrl: 'views/mine.html',
+        templateUrl: 'views/myOrder.html',
         controller: 'MyorderCtrl'
       })
       .otherwise({

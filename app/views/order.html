@@ -22,7 +22,7 @@
 	
 
    <form ng-submit="createOrder()" class="form-horizontal">
-   	  <div class="form-group">
+   	  <!-- <div class="form-group">
    	  	<label class="col-xs-5 control-label">服务日期</label>
    	  	<div class="col-xs-7 selectContainer	">
    	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()" >
@@ -39,8 +39,24 @@
 	            </select>
 	        </div>
 	    </div>
+ -->
 
-	    <!-- <input type="button" class="btn-small full-width" value="添加地址"></input> -->
+	    <div class="form-group">
+   	  	<label class="col-xs-5 control-label">服务日期</label>
+	   	  	<div class="col-xs-7 selectContainer	">
+	   	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()"  ng-options="item.day.date for item in dayList">
+				</select>
+	   	  	</div>
+   	    </div>
+
+   	    <div class="form-group">
+	        <label class="col-xs-5 control-label ">服务时间段</label>
+	        <div class="col-xs-7 selectContainer">
+	            <select name="time" id=""  class="form-control" ng-model="selectedTime"  ng-options="item.duration for item in timeList">
+	            </select>
+	        </div>
+	    </div>
+
 
 
 	   

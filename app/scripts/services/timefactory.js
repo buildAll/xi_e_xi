@@ -17,14 +17,24 @@ angular.module('cloudLaundryApp')
     var lastDay = new Date(+new Date + 12096e5);
     
     //Time duration for select
+    // var orignalTimeDuration = [
+    //   "08:00 - 10:00",
+    //   "10:00 - 12:00",
+    //   "12:00 - 14:00",
+    //   "14:00 - 16:00",
+    //   "16:00 - 18:00",
+    //   "18:00 - 20:00",
+    //   "20:00 - 22:00"
+    // ];
+
     var orignalTimeDuration = [
-      "08:00 - 10:00",
-      "10:00 - 12:00",
-      "12:00 - 14:00",
-      "14:00 - 16:00",
-      "16:00 - 18:00",
-      "18:00 - 20:00",
-      "20:00 - 22:00"
+       {id:1,duration:"08:00 - 10:00"},
+       {id:2,duration:"10:00 - 12:00"},
+       {id:3,duration:"12:00 - 14:00"},
+       {id:4,duration:"14:00 - 16:00"},
+       {id:5,duration:"16:00 - 18:00"},
+       {id:6,duration:"18:00 - 20:00"},
+       {id:7,duration:"20:00 - 22:00"},
     ];
     
     // an object for date
@@ -32,6 +42,7 @@ angular.module('cloudLaundryApp')
       this.year = y;
       this.month = m;
       this.day = d;
+      this.date = this.year.toString() + "年" + this.month.toString() + "月" + this.day.toString() + "日"; 
     }
    
     //the valid durations for both day and hour that can be selected
@@ -59,13 +70,6 @@ angular.module('cloudLaundryApp')
         var hour = new Date().getHours();
 
         switch(hour){
-
-          //test only --- start 
-          case 0:
-          validDuration.timeDuration = orignalTimeDuration.slice(3);
-          break;
-          //test only --- end
-
           case 9:
           case 10:
           validDuration.timeDuration = orignalTimeDuration.slice(1);
@@ -107,8 +111,12 @@ angular.module('cloudLaundryApp')
     function initDayDuration (startDate,endDate) {
       updateDurationAfterSpecificPM(firstDay,21); // jump to the next day when current time >= 21:00 and reset the hour duration
       while (startDate <= endDate) {
+          var oneDay = {};
           var day = new Date(startDate);
-          var oneDay = formatDay(day);
+          
+          oneDay.day = formatDay(day);
+          oneDay.id = validDuration.dayDuration.length+1;
+
           validDuration.dayDuration.push(oneDay);
           startDate.setDate(startDate.getDate() + 1);
       }
