@@ -8,7 +8,7 @@
  * Controller of the cloudLaundryApp
  */
 angular.module('cloudLaundryApp')
-  .controller('OrderCtrl', ['timeFactory','addressFactory','$scope','$location', function (timeFactory,addressFactory,$scope,$location) {
+  .controller('OrderCtrl', ['timeFactory','addressFactory','orderFactory','$scope','$location', function (timeFactory,addressFactory,orderFactory,$scope,$location) {
     
     
    var todayDate = new Date;
@@ -71,9 +71,29 @@ angular.module('cloudLaundryApp')
     }
     
    $scope.userAddress = addressFactory.getUserAddress();
+   $scope.selectedAddress="";
+   
+  $scope.createOrder = function(){
+      var order = {};
+      var addressIndex =$scope.selectedAddress;
+  
+
+      order.name = $scope.userAddress[addressIndex].userName;
+      order.tel = $scope.userAddress[addressIndex].userTel;
+      order.day = $scope.dayForSelect[$scope.selectedDay];
+      order.time = $scope.timeForSelect[$scope.selectedTime];
+      order.city = $scope.userAddress[addressIndex].cityName;
+      order.zone = $scope.userAddress[addressIndex].zone;
+      order.detailAddress = $scope.userAddress[addressIndex].detail;
+      orderFactory.add(order);
+      $location.path('/mine');
+   }
+    
 
     
-   $scope.selectedOrder = 0;
+  
+
+   
 
    
 

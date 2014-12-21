@@ -18,7 +18,9 @@ angular.module('cloudLaundryApp')
    var userAddress = [];
 
    function addNewAddress(addr){
+     addr.id = userAddress.length + 1;
      userAddress.push(addr);
+     console.log(userAddress);
    }
 
    

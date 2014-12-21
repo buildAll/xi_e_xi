@@ -1,0 +1,11 @@
+<button class="btn btn-default" ng-click="goBack()">返回</button>
+<hr>
+<div class="container">
+	<table class="table table-bordered">
+		<tr ng-repeat="order in myOrders track by $index" >
+		    <th data-field="" data-align="center">{{order.day}}</th>
+		    <th data-field="" data-align="center">{{order.time}}</th>
+		</tr>
+	</table>
+</div>
+

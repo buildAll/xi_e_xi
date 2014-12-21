@@ -2,13 +2,16 @@
 <div class="container">
 	<div class="row .bottom-align-text">
 		
-			<button class="btn btn-default btn-sm col-xs-3" ng-click="goBack()">返回首页</button>
+			<button class="btn btn-default btn-sm col-xs-3" ng-click="goBack()">返回</button>
 		    <h4 class="center-align col-xs-6">新的订单</h4>
-		    <button class="btn btn-primary btn-sm col-xs-3" ng-click="addAddress()">添加地址</button>
+
+		    <button class="btn btn-default btn-sm col-xs-3" ng-click="addAddress()">添加地址</button>
 
 	</div>
+
 </div>	
 
+<br>
 	
 
 
@@ -18,9 +21,9 @@
 
 	
 
-   <form action="" class="form-horizontal">
+   <form ng-submit="createOrder()" class="form-horizontal">
    	  <div class="form-group">
-   	  	<label class="col-xs-5 control-label">  服务日期  </label>
+   	  	<label class="col-xs-5 control-label">服务日期</label>
    	  	<div class="col-xs-7 selectContainer	">
    	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()" >
 				<option  ng-repeat="day in dayForSelect" value="{{$index}}" >{{day}}</option>
@@ -40,20 +43,22 @@
 	    <!-- <input type="button" class="btn-small full-width" value="添加地址"></input> -->
 
 
-	    <div class="table-responsive" >
+	   
 		  <table class="table table-bordered" data-height="299" data-click-to-select="true" data-select-item-name="radioName">
-             <thead>
+           
 	             	<tr ng-repeat="addr in userAddress track by $index" >
-			      	<th data-field="state" data-radio="true"><input type="radio" ng-model="$parent.selectedOrder" value="{{$index}}"></th>
+			      	<th data-field="state" data-radio="true"><input type="radio" ng-model="$parent.selectedAddress" value="{{$index}}"></th>
 			        <th data-field="cityname" data-align="center">{{addr.cityName}}</th>
 			        <th data-field="cityzone" data-align="center">{{addr.zone}}</th>
+			        <th ><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only data-align="center"">Close</span></button></th>
 			      </tr>
-             </thead>	
+           
 		      
 		</table>
-		</div>
 	
 	
+	    <button class="btn btn-warning full-width">完成</button>
+	    <!-- <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
    </form>
 
 	

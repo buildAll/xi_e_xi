@@ -10,6 +10,6 @@
 angular.module('cloudLaundryApp')
   .controller('MainCtrl', function ($scope,$rootScope) {
        $scope.newOrder = function() {
-       	$rootScope.$emit('newOrder');
+       	//$rootScope.$emit('newOrder');
        }
   });
