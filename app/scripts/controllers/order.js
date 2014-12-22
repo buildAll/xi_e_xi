@@ -59,12 +59,10 @@ angular.module('cloudLaundryApp')
   $scope.createOrder = function(){
       var order = {};
       var addressIndex =$scope.selectedAddress;
-  
-
       order.name = $scope.userAddress[addressIndex].userName;
       order.tel = $scope.userAddress[addressIndex].userTel;
-      order.day = $scope.dayList[$scope.selectedDay.id-1];
-      order.time = $scope.timeList[$scope.selectedTime.id-1];
+      order.day = $scope.selectedDay;
+      order.time = $scope.selectedTime;
       order.city = $scope.userAddress[addressIndex].cityName;
       order.zone = $scope.userAddress[addressIndex].zone;
       order.detailAddress = $scope.userAddress[addressIndex].detail;

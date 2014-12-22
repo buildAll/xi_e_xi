@@ -15,10 +15,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
-    'angular-datepicker',
-    'ui.date',
-    'ngInputDate'
+    'ngTouch'
+    // 'angular-datepicker',
+    // 'ui.date',
+    // 'ngInputDate'
   ])
   .config(function ($routeProvider) {
     $routeProvider

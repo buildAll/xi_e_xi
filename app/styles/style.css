@@ -3,7 +3,7 @@
   textarea:focus,
   input:focus {
     font-size: 16px;
-    background: #eee;
+    /*background: #eee;*/
   }
 }
 
@@ -24,4 +24,9 @@
 }
 .take-all-space-you-can{
     width:100%;
+}
+
+input.ng-invalid.ng-dirty{
+ /* border: 1px solid red;*/
+
 }

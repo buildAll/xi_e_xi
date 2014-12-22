@@ -10,9 +10,9 @@
 angular.module('cloudLaundryApp')
   .factory('addressFactory', function () {
    var city = [
-     {id:1,name:"南京",zone:["玄武","江宁","仙林"]},
-     {id:2,name:"上海",zone:["徐汇","静安"]},
-     {id:3,name:"北京",zone:["朝阳","东城"]}
+     {id:1,name:"南京市",zone:["玄武区","江宁区","仙林区"]},
+     {id:2,name:"上海市",zone:["徐汇区","静安区"]},
+     {id:3,name:"北京市",zone:["朝阳区","东城区"]}
    ];
 
    var userAddress = [];

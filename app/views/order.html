@@ -21,25 +21,7 @@
 
 	
 
-   <form ng-submit="createOrder()" class="form-horizontal">
-   	  <!-- <div class="form-group">
-   	  	<label class="col-xs-5 control-label">服务日期</label>
-   	  	<div class="col-xs-7 selectContainer	">
-   	  		<select name="date" id="" class="form-control" ng-model="selectedDay"  ng-change="updateTimeDuration()" >
-				<option  ng-repeat="day in dayForSelect" value="{{$index}}" >{{day}}</option>
-			</select>
-   	  	</div>
-   	  </div>
-
-   	   <div class="form-group">
-	        <label class="col-xs-5 control-label ">服务时间段</label>
-	        <div class="col-xs-7 selectContainer">
-	            <select name="time" id=""  class="form-control" ng-model="selectedTime" >
-	                <option  ng-repeat="time in timeForSelect" value="{{$index}}">{{time}}</option>
-	            </select>
-	        </div>
-	    </div>
- -->
+   <form name="newOrder" ng-submit="createOrder()" class="form-horizontal">
 
 	    <div class="form-group">
    	  	<label class="col-xs-5 control-label">服务日期</label>
@@ -58,23 +40,27 @@
 	    </div>
 
 
-
+      <hr>
+        <div class="bg-info center-block center-align" ng-show="userAddress.length===0">您还为添加地址，请先添加地址</div>
 	   
 		  <table class="table table-bordered" data-height="299" data-click-to-select="true" data-select-item-name="radioName">
            
-	             	<tr ng-repeat="addr in userAddress track by $index" >
-			      	<th data-field="state" data-radio="true"><input type="radio" ng-model="$parent.selectedAddress" value="{{$index}}"></th>
-			        <th data-field="cityname" data-align="center">{{addr.cityName}}</th>
-			        <th data-field="cityzone" data-align="center">{{addr.zone}}</th>
-			        <th ><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only data-align="center"">Close</span></button></th>
-			      </tr>
+         	<tr ng-repeat="addr in userAddress track by $index" >
+	      	<th data-field="state" data-radio="true"><input name="raidoBox" type="radio" ng-model="$parent.selectedAddress" value="{{$index}}" required></th>
+	        <th data-field="cityname" data-align="center">{{addr.cityName}}</th>
+	        <th data-field="cityzone" data-align="center">{{addr.zone}}</th>
+	        <th ><button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only data-align="center"">Close</span></button></th>
+	      </tr>
            
 		      
 		</table>
-	
-	
-	    <button class="btn btn-warning full-width">完成</button>
-	    <!-- <button type="button" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
+	    
+	    <div class="bg-warning center-block center-align" ng-show="newOrder.raidoBox.$error.required">请选择一个地址</div>
+	    <br>
+	   
+	     
+	    <button class="btn btn-warning full-width" ng-disabled="newOrder.raidoBox.$error.required" ng-hide="userAddress.length===0 || newOrder.raidoBox.$error.required">完成</button>
+	    
    </form>
 
 	

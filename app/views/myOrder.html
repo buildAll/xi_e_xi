@@ -17,6 +17,10 @@
 	<table class="table table-bordered">
 		<tr ng-repeat="order in myOrders track by $index" >
 			<th data-field="" data-align="center">{{order.id}}</th>
+			<th data-field="" data-align="center">{{order.name}}</th>
+			<th data-field="" data-align="center">{{order.tel}}</th>
+			<th data-field="" data-align="center">{{order.city}}</th>
+			<th data-field="" data-align="center">{{order.zone}}</th>
 		    <th data-field="" data-align="center">{{order.day.day.date}}</th>
 		    <th data-field="" data-align="center">{{order.time.duration}}</th>
 		</tr>
