@@ -55,6 +55,11 @@ angular.module('cloudLaundryApp')
     
    $scope.userAddress = addressFactory.getUserAddress();
    $scope.selectedAddress="";
+
+   $scope.confirmOrder = function(){
+      console.log('confirmOrder')
+      $location.path('/mine');
+    } 
    
   $scope.createOrder = function(){
       var order = {};
@@ -68,15 +73,38 @@ angular.module('cloudLaundryApp')
       order.detailAddress = $scope.userAddress[addressIndex].detail;
       orderFactory.add(order);
       $location.path('/mine');
+      // BootstrapDialog.show({
+      //       title: 'Default Title',
+      //       message: 'Click buttons below.',
+      //       buttons: [{
+      //           label: '确认',
+      //           cssClass: 'btn-success  close-dialog',
+      //           action: function(dialogItself){
+      //               dialogItself.close();
+      //               return $location.path('/mine');
+      //               $scope.$emit('modal-closed');
+      //              // $location.path('/mine');
+      //              // confirmOrder();
+      //           }
+      //       }, {
+      //           label: '修改',
+      //           cssClass: 'btn-default',
+      //           action: function(dialogItself){
+      //               dialogItself.close();
+      //           }
+               
+      //       }]
+      //   });  
+   
    }
-    
-
-    
-  
-
    
-
-   
-
-
+   // $scope.$on('modal-closed',function(){
+   //      $scope.$emit('leave');
+   //       console.log("aaaa");
+   // })
+   // $scope.$on('leave',function(){
+   //      console.log("aaaa");
+   //      $location.path('/mine');
+   // })
+    
   }]);

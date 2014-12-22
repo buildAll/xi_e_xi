@@ -55,11 +55,9 @@
 		      
 		</table>
 	    
-	    <div class="bg-warning center-block center-align" ng-show="newOrder.raidoBox.$error.required">请选择一个地址</div>
+	    <div class="bg-warning center-block center-align" ng-show=" submitted * newOrder.raidoBox.$error.required">请选择一个地址</div>
 	    <br>
-	   
-	     
-	    <button class="btn btn-warning full-width" ng-disabled="newOrder.raidoBox.$error.required" ng-hide="userAddress.length===0 || newOrder.raidoBox.$error.required">完成</button>
+	    <button class="btn btn-warning full-width" ng-disabled="" ng-hide="userAddress.length===0" ng-click="submitted = true">完成</button>
 	    
    </form>
 
