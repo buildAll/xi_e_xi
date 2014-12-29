@@ -4,6 +4,7 @@
 
 <div class="container ">
 	<form ng-submit="saveAddress()" class="horizontal" name="newAddress">
+
 	    <div class="form-group">
    	  	<label class="control-label"> 姓名  </label>
            <input class=" full-width" type="text" "form-control col-xs-7" ng-model="userName" placeholder="请输入姓名..." required>
@@ -12,8 +13,8 @@
         <label class="control-label"> 手机号码  </label>
            <input class=" full-width"  type="number" "form-control col-xs-7" name="userTel" ng-model="userTel" placeholder="请输入11位手机号..." ng-minlength="11" ng-maxlength="11"ng-model-options="{updateOn:blur}"  required>
       </div>
-          <div class="alert alert-danger" ng-show="newAddress.userTel.$dirty*newAddress.userTel.$error.minlength*newAddress.userTel.$touched">请输入11位有效电话号码</div>
-          <div class="alert alert-danger" ng-show="newAddress.$error.maxlength">请输入11位有效电话号码</div>
+       <div class="alert alert-danger" ng-show="newAddress.userTel.$dirty*newAddress.userTel.$error.minlength*newAddress.userTel.$touched">请输入11位有效电话号码</div>
+        <div class="alert alert-danger" ng-show="newAddress.$error.maxlength">请输入11位有效电话号码</div> 
          
          
 
