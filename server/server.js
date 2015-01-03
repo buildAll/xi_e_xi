@@ -13,7 +13,8 @@ var pool = mysql.createPool({
 
 
 var CRUD = require('mysql-crud');
-var mysql_CRUD = CRUD(pool, 'order');
+var tableOrder = CRUD(pool, 'order');
+var tableAddress = CRUD(pool, 'address');
 
 
 
@@ -33,7 +34,9 @@ app.all('*', function(req, res, next) {
   next();
  });
  
-app.post('/ReceiveJSON', function(req, res){
+
+//Get post data from front-end and then save it into mysql 
+app.post('/NewOrder', function(req, res){
    
     var data = req.body;
     var newOrder = {}; 
@@ -49,26 +52,56 @@ app.post('/ReceiveJSON', function(req, res){
 
     console.log(newOrder);
 
-	mysql_CRUD.create(newOrder, function (err, vals) {
+	tableOrder.create(newOrder, function (err, vals) {
 	    //mysql callback
 	    if (err) {
 	    	console.log("CREATE ERROR : " + err);
 	    	return;
 	    };
 	       
-	    console.log(vals); 
-      res.send("ok");
+	    // console.log(vals); 
+      res.send("Order Added");
 	});
 
    
 });
 
 
+app.post('/NewAddress', function(req, res){
+   
+    var data = req.body;
+    // console.log("below is the new Address \n");
+    //console.log(data);
+    var newAddress = {}; 
+    newAddress.UserName = data.userName;
+    newAddress.UserTel = data.userTel;
+    newAddress.CityName = data.cityName;
+    newAddress.Zone = data.zone;
+    newAddress.Detail = data.detail;
+    newAddress.UserID = data.userID;
+
+   // console.log(newOrder);
+
+  tableAddress.create(newAddress, function (err, vals) {
+      //mysql callback
+      if (err) {
+        console.log("CREATE ERROR : " + err);
+        return;
+      };
+         
+      // console.log(vals); 
+      res.send("Address Added");
+  });
+
+   
+});
+
+//Get User Info for display
 app.get('/GetUserOrder', function(req, res){
 	var userId = Number(req.query.id);
 	var userOrder;
 	console.log(userId);
-	mysql_CRUD.load({'UserID':userId},function(err,data){
+	tableOrder.load({'UserID':userId},function(err,data){
          // console.log(data);
          // userOrder = data;
           res.send(data);
@@ -76,6 +109,21 @@ app.get('/GetUserOrder', function(req, res){
 	// console.log(req);
 	//console.log("The order is :" + userOrder);
 	
+});
+
+
+app.get('/GetUserAddress', function(req, res){
+  var userId = Number(req.query.id);
+  var userOrder;
+  console.log(userId);
+  tableAddress.load({'UserID':userId},function(err,data){
+         // console.log(data);
+         // userOrder = data;
+          res.send(data);
+  })
+  // console.log(req);
+  //console.log("The order is :" + userOrder);
+  
 });
 
 // app.get('/GetUserAddress', function(req, res){

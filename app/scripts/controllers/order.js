@@ -8,7 +8,7 @@
  * Controller of the cloudLaundryApp
  */
 angular.module('cloudLaundryApp')
-  .controller('OrderCtrl', ['MessageFactory','timeFactory','addressFactory','orderFactory','$scope','$location', function (MessageFactory,timeFactory,addressFactory,orderFactory,$scope,$location) {
+  .controller('OrderCtrl', ['MessageFactory','timeFactory','addressFactory','orderFactory','$scope','$location','$rootScope','$http', function (MessageFactory,timeFactory,addressFactory,orderFactory,$scope,$location,$rootScope,$http) {
     
    var todayDate = new Date;
    var today = todayDate.getDate();
@@ -53,7 +53,26 @@ angular.module('cloudLaundryApp')
       $location.path('/');
     }
     
-   $scope.userAddress = addressFactory.getUserAddress();
+  // $scope.userAddress = addressFactory.getUserAddress();
+
+   var userAddress;
+     $http.get('http://192.168.1.104:3000/GetUserAddress?id='+4).
+              success(function(data, status, headers, config) {
+                // this callback will be called asynchronously
+                // when the response is available
+                
+                 userAddress = data;
+                 console.log(userAddress);
+
+              }).
+              error(function(data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              }).then(function(){
+                   $scope.userAddress = userAddress;
+                  // console.log("my order is :" + $scope.myOrders);
+              });
+
    $scope.selectedAddress="";
 
    $scope.confirmOrder = function(){
@@ -75,8 +94,14 @@ angular.module('cloudLaundryApp')
       order.zone = $scope.userAddress[addressIndex].zone;
       order.detailAddress = $scope.userAddress[addressIndex].detail;
       orderFactory.add(order);
-      MessageFactory.create(order);
-      $location.path('/mine');
+      MessageFactory.create(order,'NewOrder');
+      
+     // $rootScope.on('orderOK',function(){
+     //  $location.path('/mine');
+     // });
+
+
+      // $location.path('/mine');
       // BootstrapDialog.show({
       //       title: 'Default Title',
       //       message: 'Click buttons below.',
@@ -101,6 +126,13 @@ angular.module('cloudLaundryApp')
       //   });  
    
    }
+
+
+       $rootScope.$on('orderOK',function(){
+          // $location.path('/mine');
+         
+              $location.path('/mine');
+         });
    
    // $scope.$on('modal-closed',function(){
    //      $scope.$emit('leave');

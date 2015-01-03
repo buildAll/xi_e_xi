@@ -11,7 +11,7 @@
  * Controller of the cloudLaundryApp
  */
 angular.module('cloudLaundryApp')
-  .controller('AddressCtrl',[ '$scope','$location','addressFactory', function ($scope,$location,addressFactory) {
+  .controller('AddressCtrl',[ '$scope','$location','$rootScope','addressFactory','MessageFactory', function ($scope,$location,$rootScope,addressFactory,MessageFactory) {
       //go back to previous view
       $scope.goBack = function (){
       	 $location.path('/order');
@@ -40,9 +40,16 @@ angular.module('cloudLaundryApp')
       	newAddress.cityName = $scope.selectedCity.name;
       	newAddress.zone = $scope.selectedZone;
       	newAddress.detail = $scope.detail;
-      	$scope.goBack();
+            newAddress.userID = parseInt("0004"); 
+      	
       	addressFactory.add(newAddress);
       	console.log(addressFactory.getUserAddress());
+            MessageFactory.create(newAddress,"NewAddress");
+            // $scope.goBack();
       }
+
+      $rootScope.$on('addressOK',function(){
+            $scope.goBack();
+      })
 
     }]);

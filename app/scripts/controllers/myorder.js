@@ -15,7 +15,7 @@ angular.module('cloudLaundryApp')
     //  MessageFactory.get(parseInt("1"));  
      // $scope.myOrders = orderFactory.get();
      var userOrder;
-     $http.get('http://192.168.1.123:3000/GetUserOrder?id='+4).
+     $http.get('http://192.168.1.104:3000/GetUserOrder?id='+4).
               success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
@@ -28,15 +28,9 @@ angular.module('cloudLaundryApp')
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
               }).then(function(){
-                console.log(userOrder);
-                  // return userOrder;
                    $scope.myOrders = userOrder;
                    console.log("my order is :" + $scope.myOrders);
               });
-              // console.log(userOrder);
-              // return userOrder;
-          
-
 
       //$scope.myOrders = MessageFactory.userOrder();
       //console.log("my order is :" + $scope.myOrders);
