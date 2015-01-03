@@ -8,11 +8,36 @@
  * Controller of the cloudLaundryApp
  */
 angular.module('cloudLaundryApp')
-  .controller('MyorderCtrl', ['orderFactory','$scope','$location',function (orderFactory,$scope,$location) {
+  .controller('MyorderCtrl', ['orderFactory','MessageFactory','$scope','$location','$http',function (orderFactory,MessageFactory,$scope,$location,$http) {
       $scope.goBack = function(){
       	$location.path('/');
       }
+    //  MessageFactory.get(parseInt("1"));  
+     // $scope.myOrders = orderFactory.get();
+     var userOrder;
+     $http.get('http://192.168.1.123:3000/GetUserOrder?id='+4).
+              success(function(data, status, headers, config) {
+                // this callback will be called asynchronously
+                // when the response is available
+                
+                 userOrder = data;
 
-      $scope.myOrders = orderFactory.get();
-      console.log("my order is :" + $scope.myOrders);
+
+              }).
+              error(function(data, status, headers, config) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              }).then(function(){
+                console.log(userOrder);
+                  // return userOrder;
+                   $scope.myOrders = userOrder;
+                   console.log("my order is :" + $scope.myOrders);
+              });
+              // console.log(userOrder);
+              // return userOrder;
+          
+
+
+      //$scope.myOrders = MessageFactory.userOrder();
+      //console.log("my order is :" + $scope.myOrders);
     }]);

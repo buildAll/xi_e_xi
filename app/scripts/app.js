@@ -38,6 +38,10 @@ angular
         templateUrl: 'views/myOrder.html',
         controller: 'MyorderCtrl'
       })
+      .when('/userCenter', {
+        templateUrl: 'views/userCenter.html',
+        controller: 'UsercenterCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
