@@ -4,7 +4,7 @@ var mysql = require('mysql');
 var pool = mysql.createPool({
   host     : 'localhost',
   user     : 'root',
-  password : 'Zb817941',
+  password : '',
   database : 'xiexi',
   socketPath : '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
   port:3306
